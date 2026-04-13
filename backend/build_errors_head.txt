@@ -1,0 +1,30 @@
+﻿javac.exe : C:\xampp\htdoc
+s\portfolio-app\backend\sr
+c\main\java\com\portfolio\
+backend\BackendApplication
+.java:4: error: package 
+org.springframework.boot 
+does not exist
+At line:1 char:1
++ & "C:\Program Files\Java
+\jdk-20\bin\javac.exe" 
+-cp "target\classes" - ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo        
+      : NotSpecified: (C  
+  :\xampp\htdocs... doe   
+ s not exist:String) [    
+], RemoteException
+    + FullyQualifiedError 
+   Id : NativeCommandErr  
+  or
+ 
+import org.springframework
+.boot.SpringApplication;
+                          
+     ^
+C:\xampp\htdocs\portfolio-
+app\backend\src\main\java\
+com\portfolio\backend\Back

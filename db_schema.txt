@@ -1,0 +1,8 @@
+﻿Field	Type	Null	Key	Default	Extra
+id	bigint(20)	NO	PRI	NULL	auto_increment
+description	text	YES		NULL	
+github_link	varchar(255)	YES		NULL	
+image_url	varchar(255)	YES		NULL	
+live_link	varchar(255)	YES		NULL	
+tech_stack	varchar(255)	YES		NULL	
+title	varchar(255)	YES		NULL	

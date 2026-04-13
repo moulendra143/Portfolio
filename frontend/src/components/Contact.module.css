@@ -1,0 +1,116 @@
+.contactSection {
+  background: relative;
+  position: relative;
+}
+
+.contactSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-light), transparent);
+}
+
+.contactContainer {
+  display: flex;
+  gap: 4rem;
+  align-items: flex-start;
+}
+
+.contactInfo {
+  flex: 1;
+}
+
+.contactInfo h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--text-main);
+}
+
+.description {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+.infoList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.iconBox {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  background: rgba(99, 102, 241, 0.1);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.infoItem h4 {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.infoItem a,
+.infoItem span {
+  font-size: 1.1rem;
+  color: var(--text-main);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.infoItem a:hover {
+  color: var(--primary);
+}
+
+.contactFormWrapper {
+  flex: 1;
+  width: 100%;
+}
+
+.formCard {
+  background: rgba(18, 22, 41, 0.7) !important;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.submitBtn {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.sendIcon {
+  font-size: 1.1rem;
+}
+
+.successMessage {
+  margin-top: 1rem;
+  color: var(--accent);
+  text-align: center;
+  font-weight: 500;
+}
+
+@media (max-width: 992px) {
+  .contactContainer {
+    flex-direction: column;
+  }
+}
