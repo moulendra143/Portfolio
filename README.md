@@ -1,78 +1,163 @@
-# Futuristic Full Stack Portfolio
+# Full Stack Developer Portfolio
 
-A production-ready Full Stack Portfolio Web Application for a B.Tech Computer Science (AI & ML) student.
-Built with React (Vite) and Spring Boot (Java), featuring an ultra-modern futuristic UI with dark theme, glassmorphism, Framer Motion animations, and a secret admin dashboard.
+A modern, scalable full stack portfolio application built using React, Spring Boot, and MySQL. It is designed to showcase projects, skills, achievements, and integrations such as GitHub analytics.
+
+---
 
 ## Tech Stack
-- **Frontend**: React 18, Vite, Vanilla CSS Modules (No Tailwind), React Router, Framer Motion, Axios, Chart.js
-- **Backend**: Spring Boot 3.2.x, Java 17, Spring Security (JWT), Spring Data JPA
-- **Database**: MySQL
 
-## Complete Folder Structure
+### Frontend
+
+* React.js
+* CSS Modules
+* Framer Motion
+
+### Backend
+
+* Spring Boot
+* REST APIs
+* Spring Security (JWT Authentication)
+
+### Database
+
+* MySQL
+* Database Name: `portfoli_db`
+
+---
+
+## Features
+
+* Dynamic portfolio with real-time data
+* GitHub analytics integration
+* Resume download and preview
+* Certifications and internship proof preview (PDF viewer)
+* Skills categorized with progress indicators
+* Blog/article section with detailed pages
+* Contact form with backend integration
+* Secure backend with JWT authentication
+
+---
+
+## Project Structure
+
 ```
 portfolio-app/
-├── backend/                  # Spring Boot backend application
-│   ├── src/main/java/com/portfolio/backend/
-│   │   ├── config/           # Security, CORS configurations
-│   │   ├── controller/       # REST API Endpoints
-│   │   ├── model/            # JPA Entities
-│   │   ├── repository/       # Data Access Layer
-│   │   ├── security/         # JWT filters and services
-│   │   └── service/          # Business logic
-│   └── src/main/resources/   # application.properties
-│
-├── frontend/                 # React frontend application
-│   ├── src/
-│   │   ├── assets/           # Images, icons
-│   │   ├── components/       # Reusable UI components
-│   │   ├── pages/            # Page components (Home, Admin, etc.)
-│   │   ├── context/          # React context (Auth)
-│   │   ├── services/         # Axios API calls
-│   │   ├── styles/           # Global CSS and CSS Modules
-│   │   └── App.jsx           # Main routing and layout
-│   └── package.json          # Dependencies
-│
-├── docs/                     # Project documentation
-│   ├── API_DOCUMENTATION.md
-│   ├── DATABASE_SCHEMA.md
-│   └── DEPLOYMENT_GUIDE.md
-└── README.md
+├── frontend/ (React)
+├── backend/ (Spring Boot)
+├── uploads/ (PDF files - resumes, certificates)
 ```
 
-## Environment Variable Setup
+---
 
-### Backend (`backend/src/main/resources/application.properties`)
-Update the following properties to match your local setup:
+## Getting Started
+
+### Frontend Setup
+
+```bash
+cd frontend
+npm install
+npm start
+```
+
+Runs on: http://localhost:5137
+
+---
+
+### Backend Setup
+
+```bash
+cd backend
+mvn spring-boot:run
+```
+
+Runs on: http://localhost:8080
+
+---
+
+### Database Setup
+
+Create database:
+
+```sql
+CREATE DATABASE portfoli_db;
+```
+
+Update credentials in:
+
 ```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/portfolio_db
-spring.datasource.username=root
-spring.datasource.password=root
-# Change this secret for production!
-jwt.secret=9a4f2c8d3b7a1e6f45c8a0b3f267d8b1d4e6f3c8a9d2b5f8e3a9c8b5f6v8a3d9
+application.properties
 ```
 
-### Frontend (`frontend/.env`)
-Create a `.env` file in the `frontend` root:
-```env
-VITE_API_BASE_URL=http://localhost:8080
-VITE_GITHUB_USERNAME=yourgithubusername
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3306/portfoli_db
+spring.datasource.username=YOUR_USERNAME
+spring.datasource.password=YOUR_PASSWORD
 ```
 
-## Running Locally
-1. Run `CREATE DATABASE portfolio_db;` in your local MySQL instance.
-2. Start the Backend:
-   ```bash
-   cd backend
-   ./mvnw spring-boot:run
-   ```
-3. Start the Frontend:
-   ```bash
-   cd frontend
-   npm install
-   npm run dev
-   ```
+---
 
-## Admin Access
-- **URL**: Navigate to `/admin`
-- **Frontend Hardcoded Password For Testing**: `admin` / `secret2025`
-- Note: This will be connected to the Spring Boot JWT backend API ultimately.
+## Available Scripts (Frontend)
+
+### npm start
+
+Runs the app in development mode.
+
+### npm test
+
+Launches the test runner.
+
+### npm run build
+
+Builds the app for production.
+
+### npm run eject
+
+Ejects configuration (irreversible).
+
+---
+
+## Key Functional Modules
+
+* Projects showcase
+* Skills visualization
+* Achievements and certifications
+* Blog system
+* GitHub analytics dashboard
+* Resume management system
+
+---
+
+## Highlights
+
+* Smooth animations using Framer Motion
+* Clean and modern UI design
+* Modular and scalable backend architecture
+* Real-world project implementations
+
+---
+
+## Deployment
+
+Frontend:
+
+* Vercel
+* Netlify
+
+Backend:
+
+* Render
+* Railway
+* AWS
+
+---
+
+## Future Enhancements
+
+* Multi-language support
+* Advanced analytics dashboard
+* Cloud file storage integration
+* AI-powered portfolio assistant
+
+---
+
+### Built to showcase technical skills and real-world application development
