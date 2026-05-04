@@ -34,11 +34,6 @@ public class WebSecurityConfig {
     private AuthEntryPointJwt unauthorizedHandler;
 
     @Bean
-    public AuthTokenFilter authenticationJwtTokenFilter() {
-        return new AuthTokenFilter();
-    }
-
-    @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
         authProvider.setUserDetailsService(userDetailsService);
@@ -59,25 +54,10 @@ public class WebSecurityConfig {
 public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
     http
         .csrf(csrf -> csrf.disable())
-
-        // enable CORS
         .cors(cors -> {})
-
-        .headers(headers -> headers.frameOptions(frame -> frame.disable()))
-
-        .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
-
-        .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-
         .authorizeHttpRequests(auth -> auth
-        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()  // allow preflight
-        .anyRequest().permitAll()   // allow everything
-);
-
-    http.authenticationProvider(authenticationProvider());
-
-    // keep JWT filter, but it must NOT block /api/** (see step 2)
-    //http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+                .anyRequest().permitAll()
+        );
 
     return http.build();
 }
