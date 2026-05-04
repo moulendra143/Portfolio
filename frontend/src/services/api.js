@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_BASE_URL;
+// Use your deployed backend URL
+const API_URL = import.meta.env.VITE_API_BASE_URL || "http://16.171.148.29:8080/api";
+
 const api = axios.create({
   baseURL: API_URL,
   headers: {
@@ -8,18 +10,7 @@ const api = axios.create({
   },
 });
 
-// Add a request interceptor to add the JWT token to requests
-api.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      config.headers['Authorization'] = 'Bearer ' + token;
-    }
-    return config;
-  },
-  (error) => {
-    return Promise.reject(error);
-  }
-);
+// ❌ Removed JWT interceptor (this was causing 403)
+// You can add it back later when you implement login properly
 
 export default api;
