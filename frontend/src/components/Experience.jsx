@@ -58,14 +58,15 @@ const Experience = () => {
       return;
     }
 
-    // 🔥 FIX: Replace localhost with actual server hostname if found
+    // 🔥 FIX V3: Replace localhost with actual server hostname if found
     const currentHost = window.location.hostname;
-    if (link.includes('localhost:8080') || link.includes('127.0.0.1:8080')) {
+    if (link && (link.includes('localhost') || link.includes('127.0.0.1'))) {
         link = link.replace(/localhost:8080/g, `${currentHost}:8080`)
-                   .replace(/127\.0\.0\.1:8080/g, `${currentHost}:8080`);
+                   .replace(/127\.0\.0\.1:8080/g, `${currentHost}:8080`)
+                   .replace(/localhost/g, currentHost); // Catch-all
     }
 
-    console.log("Opening:", link); 
+    console.log("FIX_V3_APPLIED: Opening", link); 
     setPreviewLink(link);
   };
 
