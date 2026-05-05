@@ -10,7 +10,18 @@ const api = axios.create({
   },
 });
 
-// ❌ Removed JWT interceptor (this was causing 403)
-// You can add it back later when you implement login properly
+// Add JWT token to every request if it exists
+api.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
 
 export default api;
