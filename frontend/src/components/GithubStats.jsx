@@ -22,6 +22,24 @@ const GithubStats = () => {
 
         <div className={styles.statsContainer}>
 
+          {/* 🔥 CONTRIBUTION GRAPH */}
+          <Card className={styles.statsCard}>
+            <img
+              src={`https://github-readme-stats.vercel.app/api?username=${username}&show_icons=true&theme=tokyonight&count_private=true&include_all_commits=true`}
+              alt="GitHub Stats Overview"
+              className={styles.statImage}
+            />
+          </Card>
+
+          {/* 🔥 TOP LANGUAGES */}
+          <Card className={styles.statsCard}>
+            <img
+              src={`https://github-readme-stats.vercel.app/api/top-langs/?username=${username}&layout=compact&theme=tokyonight&hide_progress=true`}
+              alt="Top Languages Detail"
+              className={styles.statImage}
+            />
+          </Card>
+
           {/* 🔥 OVERVIEW */}
           <Card className={styles.statsCard}>
             <img
@@ -31,29 +49,11 @@ const GithubStats = () => {
             />
           </Card>
 
-          {/* 🔥 STATS */}
-          <Card className={styles.statsCard}>
-            <img
-              src={`https://github-profile-summary-cards.vercel.app/api/cards/stats?username=${username}&theme=github_dark`}
-              alt="GitHub Stats"
-              className={styles.statImage}
-            />
-          </Card>
-
-          {/* 🔥 LANGUAGES */}
+          {/* 🔥 REPOS PER LANGUAGE */}
           <Card className={styles.statsCard}>
             <img
               src={`https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=${username}&theme=github_dark`}
               alt="Languages"
-              className={styles.statImage}
-            />
-          </Card>
-
-          {/* 🔥 MOST USED LANGUAGES */}
-          <Card className={styles.statsCard}>
-            <img
-              src={`https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=${username}&theme=github_dark`}
-              alt="Top Languages"
               className={styles.statImage}
             />
           </Card>

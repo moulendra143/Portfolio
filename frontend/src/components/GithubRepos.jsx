@@ -76,6 +76,9 @@ const GithubRepos = () => {
                         <span className={styles.repoLanguage}>{repo.language}</span>
                       )}
                     </div>
+                    <div className={styles.repoDate}>
+                      Updated on {new Date(repo.updated_at).toLocaleDateString()}
+                    </div>
                   </div>
                 </Card>
               </motion.div>
