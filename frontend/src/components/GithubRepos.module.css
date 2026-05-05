@@ -1,0 +1,103 @@
+.reposSection {
+  padding: 2rem 0 5rem;
+}
+
+.subtitle {
+  font-size: 2rem;
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.reposGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.repoCard {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.repoContent {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1.5rem;
+}
+
+.repoHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.repoIcon {
+  font-size: 1.2rem;
+  color: var(--primary-color);
+}
+
+.repoName {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.repoName:hover {
+  color: var(--primary-color);
+}
+
+.repoDesc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.repoFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+}
+
+.repoStats {
+  display: flex;
+  gap: 1rem;
+  color: var(--text-muted);
+}
+
+.statItem {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.repoLanguage {
+  padding: 0.2rem 0.6rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+.loaderCenter {
+  display: flex;
+  justify-content: center;
+  padding: 4rem 0;
+}
+
+@media (max-width: 768px) {
+  .reposGrid {
+    grid-template-columns: 1fr;
+  }
+}

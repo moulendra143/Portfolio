@@ -1,0 +1,40 @@
+# Java / Maven
+target/
+*.class
+*.jar
+*.war
+*.ear
+.mvn/
+.classpath
+.project
+.settings/
+bin/
+
+# Node / React
+node_modules/
+dist/
+dist-ssr/
+*.local
+.env
+.eslintcache
+
+# Docker
+.dockerignore
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*.DS_Store
+
+# OS
+Thumbs.db
+Desktop.ini
+
+# Logs
+*.log
+run_log.txt
+run_log_2.txt
+build_errors.txt
+build_errors_head.txt
