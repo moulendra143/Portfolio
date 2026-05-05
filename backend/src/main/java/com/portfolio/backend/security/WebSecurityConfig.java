@@ -33,10 +33,6 @@ public class WebSecurityConfig {
     @Autowired
     UserDetailsServiceImpl userDetailsService;
 
-    public WebSecurityConfig() {
-        System.out.println("WebSecurityConfig: Security configuration is being loaded...");
-    }
-
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
@@ -49,7 +45,6 @@ public class WebSecurityConfig {
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
-        System.out.println("WebSecurityConfig: Providing AuthenticationManager bean...");
         return authConfig.getAuthenticationManager();
     }
 
