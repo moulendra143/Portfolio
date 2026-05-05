@@ -70,6 +70,16 @@ public class WebSecurityConfig {
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
                     .requestMatchers("/api/auth/**").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/api/projects/**").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/api/blogs/**").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/api/about/**").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/api/achievements/**").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/api/certifications/**").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/api/internships/**").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/api/skills/**").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/api/resume/**").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/api/github/**").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/api/contact-message/**").permitAll()
                     .anyRequest().authenticated()
             );
 
