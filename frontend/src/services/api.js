@@ -24,4 +24,20 @@ api.interceptors.request.use(
   }
 );
 
+// Automatically clean all URLs in response data (replace localhost with server IP)
+api.interceptors.response.use(
+  (response) => {
+    const serverIp = "16.171.148.29";
+    const dataStr = JSON.stringify(response.data);
+    if (dataStr.includes('localhost:8080')) {
+        const cleanedData = JSON.parse(dataStr.replace(/localhost:8080/g, `${serverIp}:8080`));
+        response.data = cleanedData;
+    }
+    return response;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
 export default api;
