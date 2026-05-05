@@ -43,7 +43,8 @@ public class InternshipController {
 
     @PutMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Internship> updateInternship(@PathVariable("id") long id, @RequestBody Internship internship) {
+    public ResponseEntity<Internship> updateInternship(@PathVariable("id") long id,
+            @RequestBody Internship internship) {
         Optional<Internship> internshipData = internshipRepository.findById(id);
 
         if (internshipData.isPresent()) {

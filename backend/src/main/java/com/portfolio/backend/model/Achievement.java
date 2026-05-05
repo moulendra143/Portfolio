@@ -19,4 +19,6 @@ public class Achievement {
     
     @Column(columnDefinition = "TEXT")
     private String description;
+
+    private String link; // Added for proofs
 }

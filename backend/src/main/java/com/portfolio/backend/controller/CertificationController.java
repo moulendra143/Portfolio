@@ -43,7 +43,8 @@ public class CertificationController {
 
     @PutMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Certification> updateCertification(@PathVariable("id") long id, @RequestBody Certification certification) {
+    public ResponseEntity<Certification> updateCertification(@PathVariable("id") long id,
+            @RequestBody Certification certification) {
         Optional<Certification> certificationData = certificationRepository.findById(id);
 
         if (certificationData.isPresent()) {

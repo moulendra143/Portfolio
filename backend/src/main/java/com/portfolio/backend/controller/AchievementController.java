@@ -23,8 +23,12 @@ public class AchievementController {
     public List<Achievement> getAllAchievements() {
         List<Achievement> achievements = achievementRepository.findAll();
         achievements.forEach(item -> {
-            if (item.getLink() != null && item.getLink().contains("localhost:8080")) {
-                item.setLink(item.getLink().replace("localhost:8080", "16.171.148.29:8080"));
+            if (item.getLink() != null) {
+                String link = item.getLink();
+                link = link.replace("localhost:8080", "16.171.148.29:8080")
+                           .replace("127.0.0.1:8080", "16.171.148.29:8080")
+                           .replace("localhost", "16.171.148.29");
+                item.setLink(link);
             }
         });
         return achievements;
@@ -43,7 +47,8 @@ public class AchievementController {
 
     @PutMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Achievement> updateAchievement(@PathVariable("id") long id, @RequestBody Achievement achievement) {
+    public ResponseEntity<Achievement> updateAchievement(@PathVariable("id") long id,
+            @RequestBody Achievement achievement) {
         Optional<Achievement> achievementData = achievementRepository.findById(id);
 
         if (achievementData.isPresent()) {
@@ -52,6 +57,7 @@ public class AchievementController {
             _achievement.setType(achievement.getType());
             _achievement.setDate(achievement.getDate());
             _achievement.setDescription(achievement.getDescription());
+            _achievement.setLink(achievement.getLink());
             return new ResponseEntity<>(achievementRepository.save(_achievement), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
