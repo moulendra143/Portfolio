@@ -23,21 +23,12 @@ public class AuthTokenFilter extends OncePerRequestFilter {
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
 
-   @Override
-protected void doFilterInternal(HttpServletRequest request,
-                               HttpServletResponse response,
-                               FilterChain filterChain)
-        throws ServletException, IOException {
-
-    String path = request.getRequestURI();
-
-    // 🔥 CRITICAL: do NOT run JWT for public APIs
-    if (path.startsWith("/api/")) {
-        filterChain.doFilter(request, response);
-        return;
-    }
-
-    try {
+    @Override
+    protected void doFilterInternal(HttpServletRequest request,
+                                    HttpServletResponse response,
+                                    FilterChain filterChain)
+            throws ServletException, IOException {
+        try {
         String jwt = parseJwt(request);
 
         if (jwt != null && jwtUtils.validateJwtToken(jwt)) {
