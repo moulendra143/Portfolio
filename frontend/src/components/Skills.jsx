@@ -9,7 +9,7 @@ const Skills = () => {
   const [skillsData, setSkillsData] = useState({});
   const [loading, setLoading] = useState(true);
 
-  const skillCategories = ['Frontend', 'Backend', 'Database', 'CS Fundamentals', 'AI','Tools'];
+  const skillCategories = ['Frontend', 'Backend', 'Database', 'CS Fundamentals', 'AI', 'Tools'];
 
   useEffect(() => {
     const fetchSkills = async () => {

@@ -50,7 +50,7 @@ const Experience = () => {
 
   // ✅ FIXED HANDLER
   const handlePreview = (item) => {
-    const link = item.link || item.file || item.url; // 🔥 fallback
+    let link = item.link || item.file || item.url; 
 
     if (!link) {
       console.warn("Missing link for item:", item);
@@ -58,7 +58,13 @@ const Experience = () => {
       return;
     }
 
-    console.log("Opening:", link); // 🔥 DEBUG
+    // 🔥 FIX: Replace localhost with actual server IP if found
+    if (link.includes('localhost:8080')) {
+        const serverIp = "16.171.148.29"; // Your server IP
+        link = link.replace('localhost:8080', `${serverIp}:8080`);
+    }
+
+    console.log("Opening:", link); 
     setPreviewLink(link);
   };
 

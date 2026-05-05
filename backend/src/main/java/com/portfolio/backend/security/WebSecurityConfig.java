@@ -71,7 +71,7 @@ public class WebSecurityConfig {
             .authorizeHttpRequests(auth -> auth
                     .requestMatchers("/api/auth/**").permitAll()
                     .requestMatchers(HttpMethod.GET, "/api/**").permitAll()
-                    .requestMatchers(HttpMethod.POST, "/api/contact-message/**", "/api/contact-message").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/api/contact", "/api/contact/**").permitAll()
                     .anyRequest().authenticated()
             );
 

@@ -8,7 +8,7 @@ import java.util.Map;
 @Service
 public class GithubService {
 
-    private final String GITHUB_API_URL = "https://api.github.com/users/moulendra143/repos";
+    private final String GITHUB_API_URL = "https://api.github.com/users/moulendra143/repos?sort=updated&per_page=100";
 
     public List<Map<String, Object>> getUserRepositories() {
         RestTemplate restTemplate = new RestTemplate();
