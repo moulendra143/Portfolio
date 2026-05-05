@@ -21,7 +21,13 @@ public class CertificationController {
 
     @GetMapping
     public List<Certification> getAllCertifications() {
-        return certificationRepository.findAll();
+        List<Certification> certifications = certificationRepository.findAll();
+        certifications.forEach(item -> {
+            if (item.getLink() != null && item.getLink().contains("localhost:8080")) {
+                item.setLink(item.getLink().replace("localhost:8080", "16.171.148.29:8080"));
+            }
+        });
+        return certifications;
     }
 
     @PostMapping

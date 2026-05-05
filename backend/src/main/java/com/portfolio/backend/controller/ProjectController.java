@@ -21,7 +21,16 @@ public class ProjectController {
 
     @GetMapping
     public List<Project> getAllProjects() {
-        return projectRepository.findAll();
+        List<Project> projects = projectRepository.findAll();
+        projects.forEach(item -> {
+            if (item.getLiveLink() != null && item.getLiveLink().contains("localhost:8080")) {
+                item.setLiveLink(item.getLiveLink().replace("localhost:8080", "16.171.148.29:8080"));
+            }
+            if (item.getGithubLink() != null && item.getGithubLink().contains("localhost:8080")) {
+                item.setGithubLink(item.getGithubLink().replace("localhost:8080", "16.171.148.29:8080"));
+            }
+        });
+        return projects;
     }
 
     @GetMapping("/{id}")

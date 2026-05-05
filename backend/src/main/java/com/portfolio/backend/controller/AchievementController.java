@@ -21,7 +21,13 @@ public class AchievementController {
 
     @GetMapping
     public List<Achievement> getAllAchievements() {
-        return achievementRepository.findAll();
+        List<Achievement> achievements = achievementRepository.findAll();
+        achievements.forEach(item -> {
+            if (item.getLink() != null && item.getLink().contains("localhost:8080")) {
+                item.setLink(item.getLink().replace("localhost:8080", "16.171.148.29:8080"));
+            }
+        });
+        return achievements;
     }
 
     @PostMapping

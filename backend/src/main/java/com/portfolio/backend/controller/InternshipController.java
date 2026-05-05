@@ -21,7 +21,13 @@ public class InternshipController {
 
     @GetMapping
     public List<Internship> getAllInternships() {
-        return internshipRepository.findAll();
+        List<Internship> internships = internshipRepository.findAll();
+        internships.forEach(item -> {
+            if (item.getLink() != null && item.getLink().contains("localhost:8080")) {
+                item.setLink(item.getLink().replace("localhost:8080", "16.171.148.29:8080"));
+            }
+        });
+        return internships;
     }
 
     @PostMapping
