@@ -27,10 +27,13 @@ api.interceptors.request.use(
 // Automatically clean all URLs in response data (replace localhost with server IP)
 api.interceptors.response.use(
   (response) => {
-    const serverIp = "16.171.148.29";
+    const currentHost = window.location.hostname;
     const dataStr = JSON.stringify(response.data);
-    if (dataStr.includes('localhost:8080')) {
-        const cleanedData = JSON.parse(dataStr.replace(/localhost:8080/g, `${serverIp}:8080`));
+    if (dataStr.includes('localhost:8080') || dataStr.includes('127.0.0.1:8080')) {
+        const cleanedData = JSON.parse(
+            dataStr.replace(/localhost:8080/g, `${currentHost}:8080`)
+                   .replace(/127\.0\.0\.1:8080/g, `${currentHost}:8080`)
+        );
         response.data = cleanedData;
     }
     return response;

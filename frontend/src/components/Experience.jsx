@@ -58,10 +58,11 @@ const Experience = () => {
       return;
     }
 
-    // 🔥 FIX: Replace localhost with actual server IP if found
-    if (link.includes('localhost:8080')) {
-        const serverIp = "16.171.148.29"; // Your server IP
-        link = link.replace('localhost:8080', `${serverIp}:8080`);
+    // 🔥 FIX: Replace localhost with actual server hostname if found
+    const currentHost = window.location.hostname;
+    if (link.includes('localhost:8080') || link.includes('127.0.0.1:8080')) {
+        link = link.replace(/localhost:8080/g, `${currentHost}:8080`)
+                   .replace(/127\.0\.0\.1:8080/g, `${currentHost}:8080`);
     }
 
     console.log("Opening:", link); 
