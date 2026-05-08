@@ -1,11 +1,12 @@
 .githubSection {
-  background: relative;
+  position: relative;
 }
 
 .statsContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 2rem;
+  /* min() prevents overflow on small screens */
+  grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
+  gap: clamp(1.25rem, 3vw, 2rem);
   max-width: 1000px;
   margin: 0 auto;
 }
@@ -15,7 +16,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
+  padding: clamp(1rem, 3vw, 2rem);
 }
 
 .imgWrapper {
@@ -26,11 +27,14 @@
 
 .statImage {
   max-width: 100%;
+  width: 100%;
   height: auto;
   border-radius: 8px;
 }
 
-@media (max-width: 576px) {
+/* ===== Responsive ===== */
+
+@media (max-width: 575px) {
   .statsContainer {
     grid-template-columns: 1fr;
   }

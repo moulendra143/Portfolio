@@ -87,13 +87,13 @@ const AdminSkills = () => {
         <Card style={{ marginBottom: '2rem' }}>
           <form onSubmit={handleSubmit}>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-              <Input id="name" label="Skill Name" value={formData.name} onChange={handleInputChange} required />
+              <Input id="name" label="Skill Name" value={formData.name || ''} onChange={handleInputChange} required />
               
               <div style={{ display: 'flex', flexDirection: 'column', marginBottom: '1.5rem' }}>
                 <label style={{ fontSize: '0.875rem', fontWeight: 500, color: 'var(--text-muted)', marginBottom: '0.5rem' }}>Category</label>
                 <select 
                   id="category" 
-                  value={formData.category} 
+                  value={formData.category || 'Frontend'} 
                   onChange={handleInputChange}
                   style={{ width: '100%', padding: '0.75rem 1rem', background: 'rgba(18, 22, 41, 0.5)', border: '1px solid var(--border-light)', borderRadius: '8px', color: 'var(--text-main)' }}
                 >
@@ -104,7 +104,7 @@ const AdminSkills = () => {
                 </select>
               </div>
 
-              <Input id="percentage" type="number" label="Proficiency (%)" value={formData.percentage} onChange={handleInputChange} required min="0" max="100" />
+              <Input id="percentage" type="number" label="Proficiency (%)" value={formData.percentage || 0} onChange={handleInputChange} required min="0" max="100" />
             </div>
             <Button type="submit" variant="primary" style={{ marginTop: '1rem' }}>
               {editingId ? 'Update Skill' : 'Save Skill'}

@@ -31,7 +31,7 @@ public class InternshipController {
     }
 
     @PostMapping
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<Internship> createInternship(@RequestBody Internship internship) {
         try {
             Internship _internship = internshipRepository.save(internship);
@@ -42,7 +42,7 @@ public class InternshipController {
     }
 
     @PutMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<Internship> updateInternship(@PathVariable("id") long id,
             @RequestBody Internship internship) {
         Optional<Internship> internshipData = internshipRepository.findById(id);
@@ -60,7 +60,7 @@ public class InternshipController {
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<HttpStatus> deleteInternship(@PathVariable("id") long id) {
         try {
             internshipRepository.deleteById(id);

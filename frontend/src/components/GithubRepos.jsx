@@ -14,8 +14,8 @@ const GithubRepos = () => {
     const fetchRepos = async () => {
       try {
         const res = await api.get('/github/repos');
-        // Sort by stars and take top ones if needed, or just show all
-        const sortedRepos = res.data.sort((a, b) => b.stargazers_count - a.stargazers_count);
+        // Sort by updated_at to show recent activity, including forks
+        const sortedRepos = res.data.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
         setRepos(sortedRepos);
       } catch (err) {
         console.error('Error fetching github repos:', err);
@@ -35,7 +35,7 @@ const GithubRepos = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h3 className={styles.subtitle}>Recent <span className="gradient-text">Repositories</span></h3>
+          <h3 className={styles.subtitle}>Open Source <span className="gradient-text">Repositories</span></h3>
         </motion.div>
 
         {loading ? (
@@ -59,6 +59,9 @@ const GithubRepos = () => {
                       <a href={repo.html_url} target="_blank" rel="noreferrer" className={styles.repoName}>
                         {repo.name}
                       </a>
+                      {repo.fork && (
+                        <span className={styles.repoForkBadge}>Forked</span>
+                      )}
                     </div>
                     <p className={styles.repoDesc}>
                       {repo.description || "No description provided."}

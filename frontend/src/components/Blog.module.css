@@ -18,7 +18,8 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 3rem;
-  max-width: 1200px;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .viewAllBtn {
@@ -27,8 +28,11 @@
   gap: 0.5rem;
   color: var(--primary);
   font-weight: 500;
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 2vw, 1rem);
   transition: all 0.3s ease;
+  /* Touch target */
+  min-height: 44px;
+  padding: 0 0.5rem;
 }
 
 .viewAllBtn:hover {
@@ -38,8 +42,8 @@
 
 .blogGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
+  gap: clamp(1.25rem, 3vw, 2rem);
 }
 
 .blogCard {
@@ -64,7 +68,7 @@
 }
 
 .blogTitle {
-  font-size: 1.25rem;
+  font-size: clamp(1.05rem, 2.5vw, 1.25rem);
   color: var(--text-main);
   margin-bottom: 1rem;
   line-height: 1.4;
@@ -77,7 +81,7 @@
 
 .blogSummary {
   color: var(--text-muted);
-  font-size: 0.95rem;
+  font-size: clamp(0.875rem, 2vw, 0.95rem);
   line-height: 1.6;
   margin-bottom: 2rem;
   flex: 1;
@@ -89,6 +93,8 @@
   align-items: center;
   padding-top: 1rem;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .blogMeta {
@@ -108,10 +114,18 @@
   color: #fff;
 }
 
-@media (max-width: 768px) {
+/* ===== Responsive ===== */
+
+/* Large phones (767px and below) */
+@media (max-width: 767px) {
   .header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+}
+
+/* Small phones: single column */
+@media (max-width: 575px) {
+  .blogGrid {
+    grid-template-columns: 1fr;
   }
 }

@@ -15,13 +15,19 @@
 .input {
   width: 100%;
   padding: 0.75rem 1rem;
+  /* min-height ensures 44px touch target */
+  min-height: 44px;
   background: rgba(18, 22, 41, 0.5);
   border: 1px solid var(--border-light);
   border-radius: 8px;
   color: var(--text-main);
   font-family: var(--font-sans);
-  font-size: 1rem;
+  /* iOS auto-zoom prevention: font-size must be >= 16px */
+  font-size: max(1rem, 16px);
   transition: all var(--transition-fast);
+  /* Remove iOS default styling */
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .input:focus {
@@ -38,6 +44,14 @@
 .textarea {
   min-height: 120px;
   resize: vertical;
+  /* On touch devices prevent horizontal resize which causes layout shifts */
+  resize: none;
+}
+
+@media (hover: hover) {
+  .textarea {
+    resize: vertical;
+  }
 }
 
 .errorInput {

@@ -1,16 +1,18 @@
 .heroSection {
-  min-height: 100vh;
+  min-height: 100svh; /* svh = small viewport height - avoids mobile browser chrome issues */
+  min-height: 100vh; /* fallback for browsers without svh */
   display: flex;
   align-items: center;
   position: relative;
-  padding-top: 80px; /* Accounts for navbar */
+  padding-top: clamp(70px, 12vh, 100px); /* accounts for fixed navbar */
+  padding-bottom: clamp(3rem, 8vh, 5rem);
 }
 
 .heroContainer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 4rem;
+  gap: clamp(2rem, 5vw, 4rem);
   width: 100%;
 }
 
@@ -24,20 +26,20 @@
   font-family: var(--font-display);
   color: var(--cyan);
   font-weight: 500;
-  font-size: 1.1rem;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
   margin-bottom: 1rem;
   letter-spacing: 1px;
 }
 
 .name {
-  font-size: 4rem;
+  font-size: clamp(2.2rem, 6vw, 4rem);
   margin-bottom: 0.5rem;
   color: var(--text-main);
   line-height: 1.1;
 }
 
 .title {
-  font-size: 3rem;
+  font-size: clamp(1.5rem, 4vw, 3rem);
   color: var(--text-muted);
   margin-bottom: 1.5rem;
   line-height: 1.2;
@@ -63,16 +65,19 @@
 
 .description {
   color: var(--text-muted);
-  font-size: 1.1rem;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
   margin-bottom: 2.5rem;
   max-width: 540px;
+  line-height: 1.7;
 }
 
 .actions {
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
+/* ===== Image Side ===== */
 .imageContainer {
   flex: 1;
   display: flex;
@@ -83,8 +88,8 @@
 
 .imageWrapper {
   position: relative;
-  width: 350px;
-  height: 350px;
+  width: clamp(200px, 30vw, 350px);
+  height: clamp(200px, 30vw, 350px);
 }
 
 .placeholderImg {
@@ -97,7 +102,6 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  /* Organic shape animation */
   animation: morph 8s ease-in-out infinite;
   z-index: 2;
   position: relative;
@@ -161,25 +165,26 @@
   border-radius: 2px;
 }
 
+/* ===== Responsive ===== */
+
+/* Tablets (992px and below) */
 @media (max-width: 992px) {
   .heroContainer {
     flex-direction: column-reverse;
     text-align: center;
     justify-content: center;
     padding-top: 2rem;
+    gap: 2.5rem;
   }
 
-  .greeting, .description {
+  .content {
+    max-width: 100%;
+  }
+
+  .greeting,
+  .description {
     margin-left: auto;
     margin-right: auto;
-  }
-
-  .name {
-    font-size: 3.5rem;
-  }
-
-  .title {
-    font-size: 2.5rem;
   }
 
   .actions {
@@ -187,17 +192,55 @@
   }
 }
 
-@media (max-width: 576px) {
-  .name {
-    font-size: 2.5rem;
+/* Large phones (768px and below) */
+@media (max-width: 767px) {
+  .heroSection {
+    padding-top: clamp(80px, 15vh, 110px);
   }
 
-  .title {
-    font-size: 1.8rem;
+  .scrollDown {
+    display: none; /* hide scroll hint on mobile */
+  }
+}
+
+/* Small phones (575px and below) */
+@media (max-width: 575px) {
+  .imageWrapper {
+    width: clamp(180px, 55vw, 240px);
+    height: clamp(180px, 55vw, 240px);
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .actions > * {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+  }
+}
+
+/* Landscape phones */
+@media (max-height: 500px) and (orientation: landscape) {
+  .heroSection {
+    min-height: auto;
+    padding-top: 5rem;
+    padding-bottom: 2rem;
+  }
+
+  .heroContainer {
+    flex-direction: row;
+    text-align: left;
   }
 
   .imageWrapper {
-    width: 250px;
-    height: 250px;
+    width: clamp(140px, 20vw, 200px);
+    height: clamp(140px, 20vw, 200px);
+  }
+
+  .actions {
+    justify-content: flex-start;
   }
 }

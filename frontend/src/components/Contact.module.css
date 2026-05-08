@@ -1,5 +1,4 @@
 .contactSection {
-  background: relative;
   position: relative;
 }
 
@@ -15,23 +14,24 @@
 
 .contactContainer {
   display: flex;
-  gap: 4rem;
+  gap: clamp(2rem, 5vw, 4rem);
   align-items: flex-start;
 }
 
 .contactInfo {
   flex: 1;
+  min-width: 0;
 }
 
 .contactInfo h3 {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
   margin-bottom: 1rem;
   color: var(--text-main);
 }
 
 .description {
   color: var(--text-muted);
-  font-size: 1.1rem;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
   margin-bottom: 2.5rem;
   line-height: 1.6;
 }
@@ -39,39 +39,41 @@
 .infoList {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
 .infoItem {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
 .iconBox {
-  width: 50px;
-  height: 50px;
+  width: 48px;
+  height: 48px;
   border-radius: 12px;
   background: rgba(99, 102, 241, 0.1);
   color: var(--primary);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
+  flex-shrink: 0;
 }
 
 .infoItem h4 {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--text-muted);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.2rem;
 }
 
 .infoItem a,
 .infoItem span {
-  font-size: 1.1rem;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
   color: var(--text-main);
   font-weight: 500;
   transition: color 0.3s ease;
+  word-break: break-all;
 }
 
 .infoItem a:hover {
@@ -80,6 +82,7 @@
 
 .contactFormWrapper {
   flex: 1;
+  min-width: 0;
   width: 100%;
 }
 
@@ -109,8 +112,41 @@
   font-weight: 500;
 }
 
+/* ===== Responsive ===== */
+
+/* Tablets (992px and below) */
 @media (max-width: 992px) {
   .contactContainer {
     flex-direction: column;
+  }
+
+  .contactInfo {
+    width: 100%;
+  }
+
+  .contactFormWrapper {
+    width: 100%;
+  }
+}
+
+/* Small phones (575px and below) */
+@media (max-width: 575px) {
+  .infoItem {
+    gap: 1rem;
+  }
+
+  .iconBox {
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+  }
+
+  .submitBtn {
+    flex-direction: column;
+  }
+
+  .submitBtn > * {
+    width: 100%;
+    justify-content: center;
   }
 }

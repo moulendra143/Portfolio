@@ -14,6 +14,19 @@ const Button = ({
 }) => {
   const baseClasses = `${styles.btn} ${styles[variant]} ${styles[size]} ${isFullWidth ? styles.fullWidth : ''} ${className}`;
 
+  if (type === 'submit') {
+    return (
+      <button
+        type={type}
+        className={baseClasses}
+        onClick={onClick}
+        disabled={disabled}
+      >
+        {children}
+      </button>
+    );
+  }
+
   return (
     <motion.button
       whileHover={{ scale: disabled ? 1 : 1.05 }}

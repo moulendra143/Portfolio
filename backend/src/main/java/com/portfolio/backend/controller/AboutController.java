@@ -28,7 +28,7 @@ public class AboutController {
     }
 
     @PostMapping
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<About> createOrUpdateAbout(@RequestBody About about) {
         try {
             List<About> abouts = aboutRepository.findAll();

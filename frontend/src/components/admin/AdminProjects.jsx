@@ -88,13 +88,13 @@ const AdminProjects = () => {
         <Card style={{ marginBottom: '2rem' }}>
           <form onSubmit={handleSubmit}>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-              <Input id="title" label="Title" value={formData.title} onChange={handleInputChange} required />
+              <Input id="title" label="Title" value={formData.title || ''} onChange={handleInputChange} required />
               <div style={{ gridColumn: 'span 2' }}>
-                <Input id="description" label="Description" type="textarea" value={formData.description} onChange={handleInputChange} required />
+                <Input id="description" label="Description" type="textarea" value={formData.description || ''} onChange={handleInputChange} required />
               </div>
-              <Input id="techStack" label="Tech Stack (comma separated)" value={formData.techStack} onChange={handleInputChange} required />
-              <Input id="githubLink" label="GitHub Link (Optional)" value={formData.githubLink} onChange={handleInputChange} />
-              <Input id="liveLink" label="Live Link (Optional)" value={formData.liveLink} onChange={handleInputChange} />
+              <Input id="techStack" label="Tech Stack (comma separated)" value={formData.techStack || ''} onChange={handleInputChange} required />
+              <Input id="githubLink" label="GitHub Link (Optional)" value={formData.githubLink || ''} onChange={handleInputChange} />
+              <Input id="liveLink" label="Live Link (Optional)" value={formData.liveLink || ''} onChange={handleInputChange} />
             </div>
             <Button type="submit" variant="primary" style={{ marginTop: '1rem' }}>
               {editingId ? 'Update Project' : 'Save Project'}

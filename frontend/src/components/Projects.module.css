@@ -1,11 +1,12 @@
 .projectsSection {
-  background: relative;
+  position: relative;
 }
 
 .projectsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 2.5rem;
+  /* fluid grid: min 300px per card, fills available space */
+  grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr));
+  gap: clamp(1.5rem, 3vw, 2.5rem);
 }
 
 .projectCard {
@@ -18,7 +19,7 @@
 .imageWrapper {
   position: relative;
   width: 100%;
-  height: 220px;
+  height: clamp(160px, 25vw, 220px);
   overflow: hidden;
   border-radius: 16px 16px 0 0;
 }
@@ -31,7 +32,7 @@
 }
 
 .projectCard:hover .projectImage {
-  transform: scale(1.1);
+  transform: scale(1.08);
 }
 
 .overlay {
@@ -50,24 +51,32 @@
   transition: opacity 0.3s ease;
 }
 
+/* Show overlay on touch devices (always visible for accessibility) */
+@media (hover: none) {
+  .overlay {
+    opacity: 1;
+    background: rgba(7, 9, 19, 0.5);
+  }
+}
+
 .projectCard:hover .overlay {
   opacity: 1;
 }
 
 .links {
   display: flex;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
 .iconLink {
-  width: 50px;
-  height: 50px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: var(--text-main);
   transition: all 0.3s ease;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -76,23 +85,25 @@
 .iconLink:hover {
   background: var(--primary);
   border-color: var(--primary);
-  transform: translateY(-5px);
+  transform: translateY(-4px);
   box-shadow: 0 10px 20px var(--primary-glow);
 }
 
 .projectInfo {
-  padding: 1.5rem;
+  padding: clamp(1rem, 3vw, 1.5rem);
   display: flex;
   flex-direction: column;
   flex: 1;
+  gap: 0.75rem;
 }
 
 .projectTitle {
-  font-size: 1.4rem;
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
   font-weight: 600;
   background: linear-gradient(90deg, #00f5ff, #8a2be2);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .projectDesc {
@@ -103,6 +114,10 @@
 .projectDesc li {
   position: relative;
   padding-left: 18px;
+  color: var(--text-muted);
+  font-size: clamp(0.85rem, 2vw, 0.95rem);
+  line-height: 1.6;
+  margin-bottom: 0.4rem;
 }
 
 .projectDesc li::before {
@@ -117,6 +132,7 @@
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-top: auto;
+  padding-top: 0.5rem;
 }
 
 .techTag {
@@ -127,10 +143,31 @@
   border-radius: 20px;
   font-weight: 500;
   border: 1px solid rgba(99, 102, 241, 0.2);
+  white-space: nowrap;
 }
 
-@media (max-width: 768px) {
+/* ===== Responsive ===== */
+
+/* Small phones: single column */
+@media (max-width: 575px) {
   .projectsGrid {
     grid-template-columns: 1fr;
+  }
+
+  .imageWrapper {
+    height: clamp(150px, 45vw, 200px);
+  }
+}
+
+/* Tiny phones */
+@media (max-width: 380px) {
+  .links {
+    gap: 0.75rem;
+  }
+
+  .iconLink {
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
   }
 }

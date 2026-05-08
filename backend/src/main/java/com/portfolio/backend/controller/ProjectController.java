@@ -45,7 +45,7 @@ public class ProjectController {
     }
 
     @PostMapping
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<Project> createProject(@RequestBody Project project) {
         try {
             Project _project = projectRepository.save(project);
@@ -56,7 +56,7 @@ public class ProjectController {
     }
 
     @PutMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<Project> updateProject(@PathVariable("id") long id, @RequestBody Project project) {
         Optional<Project> projectData = projectRepository.findById(id);
 
@@ -74,7 +74,7 @@ public class ProjectController {
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<HttpStatus> deleteProject(@PathVariable("id") long id) {
         try {
             projectRepository.deleteById(id);
