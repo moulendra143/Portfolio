@@ -25,7 +25,7 @@ const GithubStats = () => {
           {/* 🔥 CONTRIBUTION GRAPH */}
           <Card className={styles.statsCard}>
             <img
-              src={`https://github-readme-stats.vercel.app/api?username=${username}&show_icons=true&theme=tokyonight&count_private=true&include_all_commits=true`}
+              src={`https://github-readme-stats.vercel.app/api?username=${username}&show_icons=true&theme=tokyonight`}
               alt="GitHub Stats Overview"
               className={styles.statImage}
             />

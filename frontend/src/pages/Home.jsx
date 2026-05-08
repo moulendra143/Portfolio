@@ -5,7 +5,6 @@ import Skills from '../components/Skills';
 import Projects from '../components/Projects';
 import Experience from '../components/Experience';
 import GithubStats from '../components/GithubStats';
-import GithubRepos from '../components/GithubRepos';
 import Blog from '../components/Blog';
 import Contact from '../components/Contact';
 
@@ -18,7 +17,6 @@ const Home = () => {
       <Projects />
       <Experience />
       <GithubStats />
-      <GithubRepos />
       <Blog />
       <Contact />
     </>

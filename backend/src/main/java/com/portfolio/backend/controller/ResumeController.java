@@ -22,6 +22,33 @@ public class ResumeController {
     @Autowired
     private ResumeRepository resumeRepository;
 
+    // ✅ Add new resume
+    @PostMapping
+    public ResponseEntity<Resume> addResume(@RequestBody Resume resume) {
+        return ResponseEntity.ok(resumeRepository.save(resume));
+    }
+
+    // ✅ Update existing resume
+    @PutMapping("/{id}")
+    public ResponseEntity<Resume> updateResume(@PathVariable Long id, @RequestBody Resume resumeDetails) {
+        return resumeRepository.findById(id).map(resume -> {
+            resume.setTitle(resumeDetails.getTitle());
+            resume.setFileData(resumeDetails.getFileData());
+            resume.setActive(resumeDetails.isActive());
+            return ResponseEntity.ok(resumeRepository.save(resume));
+        }).orElse(ResponseEntity.notFound().build());
+    }
+
+    // ✅ Delete resume
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteResume(@PathVariable Long id) {
+        if (resumeRepository.existsById(id)) {
+            resumeRepository.deleteById(id);
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
+    }
+
     // ✅ Get all resumes
     @GetMapping
     public List<Resume> getAllResumes() {

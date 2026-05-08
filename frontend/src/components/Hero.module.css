@@ -2,6 +2,8 @@
   min-height: 100svh; /* svh = small viewport height - avoids mobile browser chrome issues */
   min-height: 100vh; /* fallback for browsers without svh */
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   position: relative;
   padding-top: clamp(70px, 12vh, 100px); /* accounts for fixed navbar */
@@ -144,10 +146,10 @@
 }
 
 .scrollDown {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative;
+  margin-top: 3rem;
+  left: auto;
+  transform: none;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -199,7 +201,7 @@
   }
 
   .scrollDown {
-    display: none; /* hide scroll hint on mobile */
+    margin-top: 1.5rem;
   }
 }
 
