@@ -93,9 +93,10 @@ const Navbar = () => {
               <li key={link.name}>
                 <NavLink
                   to={link.path}
+                  end={link.path === '/'}
                   onClick={(e) => handleNavClick(e, link)}
                   className={({ isActive }) => {
-                    const isActuallyActive = isHome ? activeSection === link.name : isActive;
+                    const isActuallyActive = isHome ? activeSection === link.name : (link.path === '/' ? false : isActive);
                     return `${styles.navLink} ${isActuallyActive ? styles.active : ''}`;
                   }}
                 >
@@ -136,9 +137,10 @@ const Navbar = () => {
                 <li key={link.name}>
                   <NavLink
                     to={link.path}
+                    end={link.path === '/'}
                     onClick={(e) => handleNavClick(e, link)}
                     className={({ isActive }) => {
-                      const isActuallyActive = isHome ? activeSection === link.name : isActive;
+                      const isActuallyActive = isHome ? activeSection === link.name : (link.path === '/' ? false : isActive);
                       return `${styles.mobileNavLink} ${isActuallyActive ? styles.active : ''}`;
                     }}
                   >
