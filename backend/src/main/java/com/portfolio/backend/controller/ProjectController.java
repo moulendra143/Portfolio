@@ -24,10 +24,10 @@ public class ProjectController {
         List<Project> projects = projectRepository.findAll();
         projects.forEach(item -> {
             if (item.getLiveLink() != null && item.getLiveLink().contains("localhost:8080")) {
-                item.setLiveLink(item.getLiveLink().replace("localhost:8080", "16.171.148.29:8080"));
+                item.setLiveLink(item.getLiveLink().replace("localhost:8080", "13.49.252.198:8080"));
             }
             if (item.getGithubLink() != null && item.getGithubLink().contains("localhost:8080")) {
-                item.setGithubLink(item.getGithubLink().replace("localhost:8080", "16.171.148.29:8080"));
+                item.setGithubLink(item.getGithubLink().replace("localhost:8080", "13.49.252.198:8080"));
             }
         });
         return projects;

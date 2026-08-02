@@ -24,7 +24,7 @@ public class CertificationController {
         List<Certification> certifications = certificationRepository.findAll();
         certifications.forEach(item -> {
             if (item.getLink() != null && item.getLink().contains("localhost:8080")) {
-                item.setLink(item.getLink().replace("localhost:8080", "16.171.148.29:8080"));
+                item.setLink(item.getLink().replace("localhost:8080", "13.49.252.198:8080"));
             }
         });
         return certifications;

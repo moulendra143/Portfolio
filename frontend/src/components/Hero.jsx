@@ -7,7 +7,7 @@ import profileImg from '../assets/profile_img.png';
 const Hero = () => {
 
   const handleDownloadResume = () => {
-    const apiBase = import.meta.env.VITE_API_BASE_URL || "http://16.171.148.29:8080/api";
+    const apiBase = import.meta.env.VITE_API_BASE_URL || "/api";
     window.open(`${apiBase}/resumes/download`, '_blank');
   };
 

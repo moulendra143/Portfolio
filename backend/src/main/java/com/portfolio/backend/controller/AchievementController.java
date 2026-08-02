@@ -25,9 +25,9 @@ public class AchievementController {
         achievements.forEach(item -> {
             if (item.getLink() != null) {
                 String link = item.getLink();
-                link = link.replace("localhost:8080", "16.171.148.29:8080")
-                           .replace("127.0.0.1:8080", "16.171.148.29:8080")
-                           .replace("localhost", "16.171.148.29");
+                link = link.replace("localhost:8080", "13.49.252.198:8080")
+                           .replace("127.0.0.1:8080", "13.49.252.198:8080")
+                           .replace("localhost", "13.49.252.198");
                 item.setLink(link);
             }
         });
